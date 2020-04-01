@@ -92,12 +92,12 @@ function SortingVisualizer() {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = 'lightblue';
                     barTwoStyle.backgroundColor = 'lightblue';
-                }, 5);
-            }, i * 6);
+                }, 6);
+            }, i * 10);
         }
         setTimeout(() => {
             setSorting(false);
-        }, anims.length * 6 + 600);
+        }, anims.length * 10 + 600);
     }
 
     return (
