@@ -1,0 +1,6 @@
+.nav-bar {
+    width: 75%;
+    margin: 1% 12.5%;
+    display: flex;
+    justify-content: space-between;
+}
