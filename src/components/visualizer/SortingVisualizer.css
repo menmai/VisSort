@@ -12,6 +12,10 @@ html, body {
     align-items: center;
 }
 
+.main-nav h1 {
+    font-size: calc(0.9em + 0.7vw);
+}
+
 .ctrl-panel {
     margin: 1em;
     display: flex;
@@ -30,8 +34,8 @@ html, body {
 }
 
 .array-bar {
-    width: 0.27em;
+    width: 0.4%;
     background-color: lightblue;
     display: inline-block;
-    margin: 0 0.09em;
+    margin: 0 0.05%;
 }

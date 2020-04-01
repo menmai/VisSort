@@ -76,7 +76,7 @@ function SortingVisualizer() {
                 busy={sorting}
             />
             <div className="main-nav">
-            <h2>Selected Algorithm: {sortingState}</h2>
+            <h1>Selected Algorithm: {sortingState}</h1>
                 <div className="array-container">
                     {sortingArr.map((value, idx) => (
                         <div className="array-bar" 
