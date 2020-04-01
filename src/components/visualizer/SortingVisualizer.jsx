@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as sortingAlgorithms from '../../SortingAlgorithms/sortingAlgorithms.js';
 import Navigation from '../Navigation';
 import './SortingVisualizer.css';
@@ -7,6 +7,13 @@ function SortingVisualizer() {
 
     const [sortingArr, setSortingArr] = useState([]);
     const [sortingState, setSortingState] = useState("merge-sort");
+    const [sorting, setSorting] = useState(false);
+
+    useEffect(() => {
+        if (sorting) runSort();
+    });
+
+    function handleRun() { setSorting(true); };
 
     function generateArray() {
         const arr = [];
@@ -14,7 +21,7 @@ function SortingVisualizer() {
             arr.push(randomInt(3, 98));
         }
         setSortingArr(arr);
-    }
+    };
 
     function runSort() {
         switch(sortingState) {
@@ -24,7 +31,8 @@ function SortingVisualizer() {
             default:
                 mergeSort();
         }
-    }
+    };
+
 
     function mergeSort() {
         const anims = sortingAlgorithms.mergeSort(sortingArr);
@@ -54,34 +62,18 @@ function SortingVisualizer() {
                 }, i * 5);
             }
         }
-    };
-    
-
-    /*function quickSort() {};
-
-    function heapSort() {};
-
-    function bubbleSort() {};*/
-
-    function testSort() {
-        const arr = [];
-        for(let i = 0; i < 100; i++) {
-            for(let i = 0; i < randomInt(100, 1000); i++) {
-                arr.push(randomInt(-1000, 100));
-            }
-            const jsSorted = arr.slice().sort((a, b) => a - b);
-            const msSorted = sortingAlgorithms.mergeSort(arr);
-        
-            console.log(ArraysAreEqual(jsSorted, msSorted));
-        }
+        setTimeout(() => {
+            setSorting(false);
+        }, newAnims.length * 5 + 5);
     };
 
     return (
         <div>
             <Navigation 
                 refresh={generateArray}
-                run={runSort}
                 updateState={setSortingState}
+                run={handleRun}
+                busy={sorting}
             />
             <div className="main-nav">
             <h2>Selected Algorithm: {sortingState}</h2>
@@ -99,16 +91,40 @@ function SortingVisualizer() {
 
 }
 
-function ArraysAreEqual(arr1, arr2) {
-    if(arr1.length !== arr2.length) return false;
-    for(let i = 0; i <= arr1.lenth; i++) {
-        if(arr1[i] !== arr2[i]) return false;
-    }
-    return true;
-}
 
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min +  1) + min)
 } 
+
+
+    /*function quickSort() {};
+
+    function heapSort() {};
+
+    function bubbleSort() {};
+
+    function testSort() {
+        const arr = [];
+        for(let i = 0; i < 100; i++) {
+            for(let i = 0; i < randomInt(100, 1000); i++) {
+                arr.push(randomInt(-1000, 100));
+            }
+            const jsSorted = arr.slice().sort((a, b) => a - b);
+            const msSorted = sortingAlgorithms.mergeSort(arr);
+        
+            console.log(ArraysAreEqual(jsSorted, msSorted));
+        }
+    }; 
+    
+
+    function ArraysAreEqual(arr1, arr2) {
+        if(arr1.length !== arr2.length) return false;
+            for(let i = 0; i <= arr1.lenth; i++) {
+                if(arr1[i] !== arr2[i]) return false;
+            }
+        return true;
+    }
+
+    */
 
 export default SortingVisualizer;
