@@ -28,6 +28,9 @@ function SortingVisualizer() {
             case "merge-sort":
                 mergeSort();
                 break;
+            case "quick-sort":
+                quickSort();
+                break;
             default:
                 mergeSort();
         }
@@ -66,6 +69,16 @@ function SortingVisualizer() {
             setSorting(false);
         }, newAnims.length * 5 + 5);
     };
+
+    function quickSort() {
+        const jsSorted = sortingArr.slice().sort((a, b) => a - b);
+        sortingAlgorithms.quickSort(sortingArr, 0, sortingArr.length - 1);
+
+        setTimeout(() => {
+            console.log(ArraysAreEqual(jsSorted, sortingArr));
+            setSorting(false);
+        }, 5);
+    }
 
     return (
         <div>
@@ -114,7 +127,7 @@ function randomInt(min, max) {
         
             console.log(ArraysAreEqual(jsSorted, msSorted));
         }
-    }; 
+    }; */
     
 
     function ArraysAreEqual(arr1, arr2) {
@@ -124,7 +137,5 @@ function randomInt(min, max) {
             }
         return true;
     }
-
-    */
 
 export default SortingVisualizer;
