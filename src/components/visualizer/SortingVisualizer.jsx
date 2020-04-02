@@ -38,6 +38,12 @@ function SortingVisualizer() {
         }
     };
 
+    function startResetTimer(anims){
+        setTimeout(() => {
+            setSorting(false);
+        }, anims.length * 10 + 600);
+    }
+
 
     function runMergeSort() {
         const anims = mergeSort(sortingArr);
@@ -75,7 +81,7 @@ function SortingVisualizer() {
     function runQuickSort() {
         const anims = quickSort(sortingArr, 0, sortingArr.length - 1);
         runAnimation(anims);
-        startResetTimer();
+        startResetTimer(anims);
     }
 
     return (
@@ -104,12 +110,6 @@ function SortingVisualizer() {
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min +  1) + min)
 } 
-
-function startResetTimer(){
-    setTimeout(() => {
-        setSorting(false);
-    }, anims.length * 10 + 600);
-}
 
 
     /*function runHeapSort() {};

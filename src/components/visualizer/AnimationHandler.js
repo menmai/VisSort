@@ -1,4 +1,4 @@
-export function runAnimation(anims) {
+export default function runAnimation(anims) {
     for (let i = 0; i < anims.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar');
         const [barOneCompare, barTwoCompare] = anims[i].comparison;
