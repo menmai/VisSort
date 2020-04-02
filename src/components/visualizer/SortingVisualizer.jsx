@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import * as sortingAlgorithms from '../../sortingAlgorithms/sortingAlgorithms.js';
+import mergeSort from '../../sortingAlgorithms/mergeSort.js';
+import quickSort from '../../sortingAlgorithms/quickSort.js';
 import Navigation from '../nav/Navigation';
 import './SortingVisualizer.css';
 
@@ -26,19 +27,19 @@ function SortingVisualizer() {
     function runSort() {
         switch(sortingState) {
             case "merge-sort":
-                mergeSort();
+                runMergeSort();
                 break;
             case "quick-sort":
-                quickSort();
+                runQuickSort();
                 break;
             default:
-                mergeSort();
+                runMergeSort();
         }
     };
 
 
-    function mergeSort() {
-        const anims = sortingAlgorithms.mergeSort(sortingArr);
+    function runMergeSort() {
+        const anims = mergeSort(sortingArr);
         const newAnims = [];
         for (const anim of anims) {
             newAnims.push(anim.comparison);
@@ -70,8 +71,8 @@ function SortingVisualizer() {
         }, newAnims.length * 6 + 600);
     };
 
-    function quickSort() {
-        const qsResults = sortingAlgorithms.quickSort(sortingArr, 0, sortingArr.length - 1);
+    function runQuickSort() {
+        const qsResults = quickSort(sortingArr, 0, sortingArr.length - 1);
         const anims = qsResults;
         for (let i = 0; i < anims.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -128,8 +129,8 @@ function randomInt(min, max) {
 } 
 
 
-    /*function heapSort() {};
+    /*function runHeapSort() {};
 
-    function bubbleSort() {};*/
+    function runBubbleSort() {};*/
 
 export default SortingVisualizer;

@@ -1,4 +1,5 @@
-import * as sortingAlgorithms from '../sortingAlgorithms/sortingAlgorithms.js';
+import mergeSort from '../../sortingAlgorithms/mergeSort.js';
+import quickSort from '../../sortingAlgorithms/quickSort.js';
 
 // Tests were completed before moving into animation phase
 
@@ -9,7 +10,7 @@ import * as sortingAlgorithms from '../sortingAlgorithms/sortingAlgorithms.js';
             arr.push(randomInt(-1000, 100));
         }
         const msSorted = arr.slice().sort((a, b) => a - b);
-        const qsSorted = sortingAlgorithms.mergeSort(arr);
+        const qsSorted = mergeSort(arr);
         console.log(ArraysAreEqual(jsSorted, msSorted));
     }
 }; */
@@ -21,7 +22,7 @@ import * as sortingAlgorithms from '../sortingAlgorithms/sortingAlgorithms.js';
             arr.push(randomInt(-1000, 100));
         }
         const jsSorted = arr.slice().sort((a, b) => a - b);
-        const qsSorted = sortingAlgorithms.quickSort(arr, 0, arr.length - 1).returnArray;
+        const qsSorted = quickSort(arr, 0, arr.length - 1).returnArray;
         console.log(ArraysAreEqual(jsSorted, qsSorted));
     }
 }; */
