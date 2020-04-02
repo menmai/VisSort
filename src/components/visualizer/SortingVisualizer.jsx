@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import mergeSort from '../../sortingAlgorithms/mergeSort.js';
 import quickSort from '../../sortingAlgorithms/quickSort.js';
+import runAnimation from './AnimationHandler.js';
 import Navigation from '../nav/Navigation';
 import './SortingVisualizer.css';
 
@@ -72,33 +73,9 @@ function SortingVisualizer() {
     };
 
     function runQuickSort() {
-        const qsResults = quickSort(sortingArr, 0, sortingArr.length - 1);
-        const anims = qsResults;
-        for (let i = 0; i < anims.length; i++) {
-            const arrayBars = document.getElementsByClassName('array-bar');
-            const [barOneCompare, barTwoCompare] = anims[i].comparison;
-            let barOneStyle = arrayBars[barOneCompare].style;
-            let barTwoStyle = arrayBars[barTwoCompare].style;
-            setTimeout(() => {
-                if(anims[i].swap !== null) {
-                    const [barOneSwap, barTwoSwap] = anims[i].swap;
-                    barOneStyle = arrayBars[barOneSwap].style;
-                    barTwoStyle = arrayBars[barTwoSwap].style;
-                    const temp = barOneStyle.height;
-                    barOneStyle.height = barTwoStyle.height;
-                    barTwoStyle.height = temp;
-                }
-                barOneStyle.backgroundColor = 'red';
-                barTwoStyle.backgroundColor = 'red';
-                setTimeout(() => {
-                    barOneStyle.backgroundColor = 'lightblue';
-                    barTwoStyle.backgroundColor = 'lightblue';
-                }, 6);
-            }, i * 10);
-        }
-        setTimeout(() => {
-            setSorting(false);
-        }, anims.length * 10 + 600);
+        const anims = quickSort(sortingArr, 0, sortingArr.length - 1);
+        runAnimation(anims);
+        startResetTimer();
     }
 
     return (
@@ -127,6 +104,12 @@ function SortingVisualizer() {
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min +  1) + min)
 } 
+
+function startResetTimer(){
+    setTimeout(() => {
+        setSorting(false);
+    }, anims.length * 10 + 600);
+}
 
 
     /*function runHeapSort() {};
