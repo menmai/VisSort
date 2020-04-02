@@ -1,4 +1,4 @@
-export function mergeSort(array) {
+export default function mergeSort(array) {
     const anims = [];
     if (array.length <= 1) return array;
     const auxArray = array.slice();
