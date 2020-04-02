@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import * as sortingAlgorithms from '../../SortingAlgorithms/sortingAlgorithms.js';
-import Navigation from '../Navigation';
+import * as sortingAlgorithms from '../../sortingAlgorithms/sortingAlgorithms.js';
+import Navigation from '../nav/Navigation';
 import './SortingVisualizer.css';
 
 function SortingVisualizer() {
@@ -131,26 +131,5 @@ function randomInt(min, max) {
     /*function heapSort() {};
 
     function bubbleSort() {};*/
-
-    /*function testSort() {
-        const arr = [];
-        for(let i = 0; i < 100; i++) {
-            for(let i = 0; i < randomInt(100, 1000); i++) {
-                arr.push(randomInt(-1000, 100));
-            }
-            const jsSorted = arr.slice().sort((a, b) => a - b);
-            const qsSorted = sortingAlgorithms.quickSort(arr, 0, arr.length - 1).returnArray;
-            console.log(ArraysAreEqual(jsSorted, qsSorted));
-        }
-    }; */
-    
-
-    /* function ArraysAreEqual(arr1, arr2) {
-        if(arr1.length !== arr2.length) return false;
-            for(let i = 0; i <= arr1.lenth; i++) {
-                if(arr1[i] !== arr2[i]) return false;
-            }
-        return true;
-    } */
 
 export default SortingVisualizer;
