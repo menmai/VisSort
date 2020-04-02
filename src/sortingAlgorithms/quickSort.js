@@ -1,8 +1,8 @@
 export default function quickSort(arr, low, high) {
     const anims = [];
     if(arr.length <= 1) return arr;
-    const auxArray = arr;
-    quickSortHelper(auxArray, low, high, anims);
+    //const arr = inArr.slice();
+    quickSortHelper(arr, low, high, anims);
     return anims;
 }
 
