@@ -38,14 +38,14 @@ function SortingVisualizer() {
         }
     };
 
-    function startResetTimer(anims){
+    function startResetTimer(anims, timeIncrements){
         setTimeout(() => {
             setSorting(false);
-        }, anims.length * 10 + 600);
+        }, anims.length * timeIncrements + 600);
     }
 
-
     function runMergeSort() {
+        const animSpeed = 6;
         const anims = mergeSort(sortingArr);
         const newAnims = [];
         for (const anim of anims) {
@@ -64,24 +64,24 @@ function SortingVisualizer() {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
-                }, i * 6);
+                }, i * animSpeed);
             } else {
                 setTimeout(() => {
                     const [barOneIdx, newHeight] = newAnims[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}%`;
-                }, i * 6);
+                }, i * animSpeed);
             }
         }
-        setTimeout(() => {
-            setSorting(false);
-        }, newAnims.length * 6 + 600);
+        startResetTimer(newAnims, animSpeed);
     };
 
     function runQuickSort() {
+        const animSpeed = 10;
         const anims = quickSort(sortingArr, 0, sortingArr.length - 1);
-        runAnimation(anims);
-        startResetTimer(anims);
+
+        runAnimation(anims, animSpeed);
+        startResetTimer(anims, animSpeed);
     }
 
     return (
@@ -89,8 +89,8 @@ function SortingVisualizer() {
             <Navigation 
                 refresh={generateArray}
                 updateState={setSortingState}
-                run={handleRun}
                 busy={sorting}
+                run={handleRun}
             />
             <div className="main-nav">
             <h1>Selected Algorithm: {sortingState}</h1>
