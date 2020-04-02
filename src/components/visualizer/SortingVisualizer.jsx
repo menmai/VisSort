@@ -104,6 +104,14 @@ function SortingVisualizer() {
         startResetTimer(anims, animSpeed);
     }
 
+    const arrayBars = (
+        sortingArr.map((value, idx) => (
+            <div className="array-bar" 
+                key={idx}
+                style={{height: `${value}%`}}>
+            </div>
+        ))
+    );
 
     return (
         <div>
@@ -116,12 +124,7 @@ function SortingVisualizer() {
             <div className="main-nav">
             <h1>Selected Algorithm: {sortingState}</h1>
                 <div className="array-container">
-                    {sortingArr.map((value, idx) => (
-                        <div className="array-bar" 
-                            key={idx}
-                            style={{height: `${value}%`}}>
-                        </div>
-                    ))}
+                    {arrayBars}
                 </div>
             </div>
         </div>
