@@ -2,13 +2,10 @@ export default function bubbleSort(arr) {
     const anims = [];
     if(arr.length <= 1) return arr;
 
-    let i = 0, j = 0;
     let swapped = false;
 
     for(let i = 0; i < arr.length - 1; i++) {
-
         swapped = false;
-
         for(let j = 0; j < arr.length - i - 1; j++) {
             const anim = {};
             anim.comparison = [i, j];
