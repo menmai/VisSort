@@ -1,4 +1,4 @@
-export function quickSort(arr, low, high) {
+export default function quickSort(arr, low, high) {
     const anims = [];
     if(arr.length <= 1) return arr;
     const auxArray = arr;
