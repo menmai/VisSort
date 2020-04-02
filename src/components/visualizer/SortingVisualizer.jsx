@@ -98,7 +98,7 @@ function SortingVisualizer() {
     }
 
     function runBubbleSort() {
-        const animSpeed = 1;
+        const animSpeed = 2;
         const anims = bubbleSort(sortingArr);
         runAnimation(anims, animSpeed);
         startResetTimer(anims, animSpeed);
