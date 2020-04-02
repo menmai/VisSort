@@ -1,4 +1,4 @@
-export default function runAnimation(anims) {
+export default function runAnimation(anims, timeIncrements) {
     for (let i = 0; i < anims.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar');
         const [barOneCompare, barTwoCompare] = anims[i].comparison;
@@ -18,7 +18,7 @@ export default function runAnimation(anims) {
             setTimeout(() => {
                 barOneStyle.backgroundColor = 'lightblue';
                 barTwoStyle.backgroundColor = 'lightblue';
-            }, 6);
-        }, i * 10);
+            }, Math.round(timeIncrements * 0.6));
+        }, i * timeIncrements);
     }
 }
