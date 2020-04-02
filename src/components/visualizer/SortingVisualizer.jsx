@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import mergeSort from '../../sortingAlgorithms/mergeSort.js';
 import quickSort from '../../sortingAlgorithms/quickSort.js';
+import heapSort from '../../sortingAlgorithms/heapSort.js';
 import runAnimation from './AnimationHandler.js';
 import Navigation from '../nav/Navigation';
 import './SortingVisualizer.css';
 
 function SortingVisualizer() {
 
+    const [sorting, setSorting] = useState(false);
     const [sortingArr, setSortingArr] = useState([]);
     const [sortingState, setSortingState] = useState("merge-sort");
-    const [sorting, setSorting] = useState(false);
 
     useEffect(() => {
-        if (sorting) runSort();
+        if (sorting) runSort();  
     });
 
-    function handleRun() { setSorting(true); };
+    useEffect(() => {
+        generateArray();
+    }, []);
+
+    function handleRun() { 
+        setSorting(true);
+    };
 
     function generateArray() {
         const arr = [];
@@ -33,6 +40,9 @@ function SortingVisualizer() {
             case "quick-sort":
                 runQuickSort();
                 break;
+            case "heap-sort":
+                runHeapSort();
+                break;
             default:
                 runMergeSort();
         }
@@ -46,6 +56,7 @@ function SortingVisualizer() {
 
     function runMergeSort() {
         const animSpeed = 6;
+        console.log(sortingArr);
         const anims = mergeSort(sortingArr);
         const newAnims = [];
         for (const anim of anims) {
@@ -77,12 +88,19 @@ function SortingVisualizer() {
     };
 
     function runQuickSort() {
-        const animSpeed = 10;
+        const animSpeed = 18;
         const anims = quickSort(sortingArr, 0, sortingArr.length - 1);
-
         runAnimation(anims, animSpeed);
         startResetTimer(anims, animSpeed);
     }
+
+    function runHeapSort() {
+        const animSpeed = 18;
+        const anims = heapSort(sortingArr);
+        runAnimation(anims, animSpeed);
+        startResetTimer(anims, animSpeed);
+    }
+
 
     return (
         <div>
@@ -111,9 +129,6 @@ function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min +  1) + min)
 } 
 
-
-    /*function runHeapSort() {};
-
-    function runBubbleSort() {};*/
+    /* function runBubbleSort() {};*/
 
 export default SortingVisualizer;
