@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import mergeSort from '../../sortingAlgorithms/mergeSort.js';
 import quickSort from '../../sortingAlgorithms/quickSort.js';
 import heapSort from '../../sortingAlgorithms/heapSort.js';
+import bubbleSort from '../../sortingAlgorithms/bubbleSort.js';
 import runAnimation from './AnimationHandler.js';
 import Navigation from '../nav/Navigation';
 import './SortingVisualizer.css';
@@ -33,19 +34,14 @@ function SortingVisualizer() {
     };
 
     function runSort() {
-        switch(sortingState) {
-            case "merge-sort":
-                runMergeSort();
-                break;
-            case "quick-sort":
-                runQuickSort();
-                break;
-            case "heap-sort":
-                runHeapSort();
-                break;
-            default:
-                runMergeSort();
-        }
+        if(sortingState == "merge-sort")
+            runMergeSort();
+        else if(sortingState == "quick-sort")
+            runQuickSort();
+        else if(sortingState == "heap-sort")
+            runHeapSort();
+        else if(sortingState == "bubble-sort")
+            runBubbleSort();
     };
 
     function startResetTimer(anims, timeIncrements){
@@ -101,6 +97,13 @@ function SortingVisualizer() {
         startResetTimer(anims, animSpeed);
     }
 
+    function runBubbleSort() {
+        const animSpeed = 1;
+        const anims = bubbleSort(sortingArr);
+        runAnimation(anims, animSpeed);
+        startResetTimer(anims, animSpeed);
+    }
+
 
     return (
         <div>
@@ -128,7 +131,5 @@ function SortingVisualizer() {
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min +  1) + min)
 } 
-
-    /* function runBubbleSort() {};*/
 
 export default SortingVisualizer;
