@@ -1,7 +1,6 @@
 export default function quickSort(arr, low, high) {
     const anims = [];
     if(arr.length <= 1) return arr;
-    //const arr = inArr.slice();
     quickSortHelper(arr, low, high, anims);
     return anims;
 }
@@ -19,6 +18,7 @@ function partition(arr, low, high, anims){
     let i = low - 1;
     for (let j = low; j < high; j++){
         const anim = {};
+        anim.swap = null;
         anim.comparison = [j, high];
         if(arr[j] < pivot){
             i++;
@@ -27,16 +27,18 @@ function partition(arr, low, high, anims){
             arr[i] = arr[j];
             arr[j] = holder;
         }
-        if(!anim.swap) anim.swap = null;
         anims.push(anim);
     }
-    let holder = arr[i + 1];
-    arr[i + 1] = arr[high];
-    arr[high] = holder;
-    let anim = {};
+
+    const anim = {};
     anim.comparison = [i + 1, high];
     anim.swap = [i + 1, high];
     anims.push(anim)
+
+    let holder = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = holder;
+    
     return i + 1;
 }
 
