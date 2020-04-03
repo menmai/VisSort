@@ -4,10 +4,10 @@ This is my version of an algorithm sorting visualizer. The idea was inspired by 
 
 Details of sorting algorithms used:
 
-Merge Sort: https://en.wikipedia.org/wiki/Merge_sort
-Quick Sort (Last element pivot): https://en.wikipedia.org/wiki/Quicksort
-Heap Sort: https://en.wikipedia.org/wiki/Heapsort
+Merge Sort: https://en.wikipedia.org/wiki/Merge_sort <br/>
+Quick Sort (Last element pivot): https://en.wikipedia.org/wiki/Quicksort <br/>
+Heap Sort: https://en.wikipedia.org/wiki/Heapsort <br/>
 Bubble Sort: https://en.wikipedia.org/wiki/Bubble_sort
 
-Clement Mihailescu's implementation: https://www.youtube.com/watch?v=pFXYym4Wbkc
+Clement Mihailescu's implementation: https://www.youtube.com/watch?v=pFXYym4Wbkc <br/>
 Further information can be found here: https://www.geeksforgeeks.org/sorting-algorithms/
