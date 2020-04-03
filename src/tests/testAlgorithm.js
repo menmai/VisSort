@@ -1,8 +1,9 @@
+// Tests were completed before moving into animation phase
+
 import mergeSort from '../../sortingAlgorithms/mergeSort.js';
 import quickSort from '../../sortingAlgorithms/quickSort.js';
-import heapSort from '../../sortingAlgorithms/quickSort.js';
-
-// Tests were completed before moving into animation phase
+import heapSort from '../../sortingAlgorithms/heapSort.js';
+import bubbleSort from '../../sortingAlgorithms/bubbleSort.js';
 
 /* export function testMergeSort() {
     const arr = [];
@@ -39,6 +40,19 @@ import heapSort from '../../sortingAlgorithms/quickSort.js';
         console.log(ArraysAreEqual(jsSorted, hsSorted));
     }
 }; */
+
+/* export function testBubbleSort() {
+    const arr = [];
+    for(let i = 0; i < 100; i++) {
+        for(let i = 0; i < randomInt(100, 1000); i++) {
+            arr.push(randomInt(-1000, 100));
+        }
+        const jsSorted = arr.slice().sort((a, b) => a - b);
+        const bsSorted = bubbleSort(arr);
+        console.log(ArraysAreEqual(jsSorted, bsSorted));
+    }
+}; */
+
 
 
 function ArraysAreEqual(arr1, arr2) {
