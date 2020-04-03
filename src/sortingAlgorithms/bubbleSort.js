@@ -1,4 +1,6 @@
-export default function bubbleSort(arr) {
+// Create and return animations array resulting from the bubble sort algorithm
+
+export default function getBubbleSortAnims(arr) {
     const anims = [];
     if(arr.length <= 1) return arr;
 

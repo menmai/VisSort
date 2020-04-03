@@ -1,4 +1,6 @@
-export default function heapSort(arr) {
+// Create and return animations array resulting from the heap sort algorithm
+
+export default function getHeapSortAnims(arr) {
     const anims = [];
     if(arr.length <= 1) return arr;
     heapSortHelper(arr, anims);

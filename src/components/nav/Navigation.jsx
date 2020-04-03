@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import './Navigation.css';
 
+// Full navigation bar component with Select Algorithm dropdown bar, Reset button and Run button
+
 function Navigation(props) {
     return(
         <div className="nav-bar">

@@ -1,4 +1,6 @@
-export default function quickSort(arr, low, high) {
+// Create and return animations array resulting from the quick sort algorithm
+
+export default function getQuickSortAnims(arr, low, high) {
     const anims = [];
     if(arr.length <= 1) return arr;
     quickSortHelper(arr, low, high, anims);
