@@ -1,4 +1,4 @@
-You can see the project here:
+You can see the project here: https://menmai.github.io/VisSort/
 
 This is my version of an algorithm sorting visualizer. The idea was inspired by and based on Clement Mihalescu's version using a simple React app and HTML display elements. 
 
