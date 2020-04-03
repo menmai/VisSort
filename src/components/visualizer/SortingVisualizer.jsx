@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import mergeSort from '../../sortingAlgorithms/mergeSort.js';
-import quickSort from '../../sortingAlgorithms/quickSort.js';
-import heapSort from '../../sortingAlgorithms/heapSort.js';
-import bubbleSort from '../../sortingAlgorithms/bubbleSort.js';
-import runAnimation from './AnimationHandler.js';
+import getMergeSortAnims from '../../sortingAlgorithms/mergeSort.js';
+import getQuickSortAnims from '../../sortingAlgorithms/quickSort.js';
+import getHeapSortAnims from '../../sortingAlgorithms/heapSort.js';
+import getBubbleSortAnims from '../../sortingAlgorithms/bubbleSort.js';
+import runAnimation, { runMSAnimation } from './AnimationHandler.js';
 import Navigation from '../nav/Navigation';
 import './SortingVisualizer.css';
 
 function SortingVisualizer() {
 
+    // State variables
+
     const [sorting, setSorting] = useState(false);
     const [sortingArr, setSortingArr] = useState([]);
     const [sortingState, setSortingState] = useState("merge-sort");
+
+    // Hooks for starting sorting and generating a new array on load
 
     useEffect(() => {
         if (sorting) runSort();  
@@ -21,9 +25,14 @@ function SortingVisualizer() {
         generateArray();
     }, []);
 
+    // Handles run button click action
+
     function handleRun() { 
         setSorting(true);
     };
+
+    // Generate a new 200 element array with random values from 3 to 98
+    // Update state array
 
     function generateArray() {
         const arr = [];
@@ -33,16 +42,50 @@ function SortingVisualizer() {
         setSortingArr(arr);
     };
 
+    // Run the algorithm corresponding to the current sorting state
+
     function runSort() {
-        if(sortingState == "merge-sort")
+        if(sortingState === "merge-sort")
             runMergeSort();
-        else if(sortingState == "quick-sort")
+        else if(sortingState === "quick-sort")
             runQuickSort();
-        else if(sortingState == "heap-sort")
+        else if(sortingState === "heap-sort")
             runHeapSort();
-        else if(sortingState == "bubble-sort")
+        else if(sortingState === "bubble-sort")
             runBubbleSort();
     };
+
+    // Functions to run and create animations for the specified sorting algorithms
+
+     function runMergeSort() {
+        const animSpeed = 18;
+        const anims = getMergeSortAnims(sortingArr);
+        runMSAnimation(anims, animSpeed);
+        startResetTimer(anims, animSpeed);
+    } 
+
+    function runQuickSort() {
+        const animSpeed = 18;
+        const anims = getQuickSortAnims(sortingArr, 0, sortingArr.length - 1);
+        runAnimation(anims, animSpeed);
+        startResetTimer(anims, animSpeed);
+    }
+
+    function runHeapSort() {
+        const animSpeed = 18;
+        const anims = getHeapSortAnims(sortingArr);
+        runAnimation(anims, animSpeed);
+        startResetTimer(anims, animSpeed);
+    }
+
+    function runBubbleSort() {
+        const animSpeed = 2;
+        const anims = getBubbleSortAnims(sortingArr);
+        runAnimation(anims, animSpeed);
+        startResetTimer(anims, animSpeed);
+    }
+
+    // Reset timer resets the screen buttoms after the sorting algorithm animations are completed
 
     function startResetTimer(anims, timeIncrements){
         setTimeout(() => {
@@ -50,59 +93,7 @@ function SortingVisualizer() {
         }, anims.length * timeIncrements + 600);
     }
 
-    function runMergeSort() {
-        const animSpeed = 6;
-        console.log(sortingArr);
-        const anims = mergeSort(sortingArr);
-        const newAnims = [];
-        for (const anim of anims) {
-            newAnims.push(anim.comparison);
-            newAnims.push(anim.comparison);
-            newAnims.push(anim.swap);
-        }
-        for (let i = 0; i < newAnims.length; i++) {
-            const arrayBars = document.getElementsByClassName('array-bar');
-            const isColorChange = i % 3 !== 2;
-            if(isColorChange) {
-                const [barOneIdx, barTwoIdx] = newAnims[i];
-                const barOneStyle = arrayBars[barOneIdx].style;
-                const barTwoStyle = arrayBars[barTwoIdx].style;
-                const color = i % 3 === 0 ? 'red' : 'lightblue';
-                setTimeout(() => {
-                    barOneStyle.backgroundColor = color;
-                    barTwoStyle.backgroundColor = color;
-                }, i * animSpeed);
-            } else {
-                setTimeout(() => {
-                    const [barOneIdx, newHeight] = newAnims[i];
-                    const barOneStyle = arrayBars[barOneIdx].style;
-                    barOneStyle.height = `${newHeight}%`;
-                }, i * animSpeed);
-            }
-        }
-        startResetTimer(newAnims, animSpeed);
-    };
-
-    function runQuickSort() {
-        const animSpeed = 18;
-        const anims = quickSort(sortingArr, 0, sortingArr.length - 1);
-        runAnimation(anims, animSpeed);
-        startResetTimer(anims, animSpeed);
-    }
-
-    function runHeapSort() {
-        const animSpeed = 18;
-        const anims = heapSort(sortingArr);
-        runAnimation(anims, animSpeed);
-        startResetTimer(anims, animSpeed);
-    }
-
-    function runBubbleSort() {
-        const animSpeed = 2;
-        const anims = bubbleSort(sortingArr);
-        runAnimation(anims, animSpeed);
-        startResetTimer(anims, animSpeed);
-    }
+    // arrayBars generated by mapping the values in the current states sorting array
 
     const arrayBars = (
         sortingArr.map((value, idx) => (
@@ -112,6 +103,8 @@ function SortingVisualizer() {
             </div>
         ))
     );
+
+    // Render
 
     return (
         <div>
@@ -130,6 +123,8 @@ function SortingVisualizer() {
         </div>
     );
 }
+
+// Generate a random integer between the value of min and max
 
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min +  1) + min)
