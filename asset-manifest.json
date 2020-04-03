@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/menmai/VisSort/static/css/main.d6cd98f1.chunk.css",
+    "main.js": "/menmai/VisSort/static/js/main.e3f0b116.chunk.js",
+    "main.js.map": "/menmai/VisSort/static/js/main.e3f0b116.chunk.js.map",
+    "runtime-main.js": "/menmai/VisSort/static/js/runtime-main.d4e6d51a.js",
+    "runtime-main.js.map": "/menmai/VisSort/static/js/runtime-main.d4e6d51a.js.map",
+    "static/js/2.464a9f2e.chunk.js": "/menmai/VisSort/static/js/2.464a9f2e.chunk.js",
+    "static/js/2.464a9f2e.chunk.js.map": "/menmai/VisSort/static/js/2.464a9f2e.chunk.js.map",
+    "index.html": "/menmai/VisSort/index.html",
+    "precache-manifest.bb2637b07f096012639fa249986f282b.js": "/menmai/VisSort/precache-manifest.bb2637b07f096012639fa249986f282b.js",
+    "service-worker.js": "/menmai/VisSort/service-worker.js",
+    "static/css/main.d6cd98f1.chunk.css.map": "/menmai/VisSort/static/css/main.d6cd98f1.chunk.css.map",
+    "static/js/2.464a9f2e.chunk.js.LICENSE.txt": "/menmai/VisSort/static/js/2.464a9f2e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d4e6d51a.js",
+    "static/js/2.464a9f2e.chunk.js",
+    "static/css/main.d6cd98f1.chunk.css",
+    "static/js/main.e3f0b116.chunk.js"
+  ]
+}
