@@ -1,3 +1,5 @@
+// Create and return animations array resulting from the merge sort algorithm
+
 export default function mergeSort(array) {
     const anims = [];
     if (array.length <= 1) return array;
@@ -6,13 +8,7 @@ export default function mergeSort(array) {
     return anims;
 }
 
-function mergeSortHelper (
-    mainArray,
-    startIdx,
-    endIdx,
-    auxArray,
-    anims
-) {
+function mergeSortHelper (mainArray, startIdx, endIdx, auxArray, anims) {
     if(startIdx === endIdx) return;
     const midIdx = Math.floor((startIdx + endIdx) / 2);
     mergeSortHelper(auxArray, startIdx, midIdx, mainArray, anims);
@@ -20,14 +16,7 @@ function mergeSortHelper (
     doMerge(mainArray, startIdx, midIdx, endIdx, auxArray, anims);
 }
 
-function doMerge(
-    mainArray,
-    startIdx,
-    midIdx,
-    endIdx,
-    auxArray,
-    anims
-) {
+function doMerge(mainArray, startIdx, midIdx, endIdx, auxArray, anims) {
     let k = startIdx;
     let i = startIdx;
     let j = midIdx + 1;
@@ -58,4 +47,3 @@ function doMerge(
         mainArray[k++] = auxArray[j++];
     }
 }
-
